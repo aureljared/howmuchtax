@@ -21,7 +21,7 @@ $(document).ready(function(){
 	var populate = function(el){
 		var item = $(el).children().first(),
 			attr = $(item).attr('id'), curr = attr.toUpperCase(),
-			source = "http://api.fixer.io/latest?base=" + curr;
+			source = "https://api.fixer.io/latest?base=" + curr;
 
 		$.get(source, function(data, status){
 			var d = JSON.parse(JSON.stringify(data));
