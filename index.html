@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- 
+    Import tax calculator styles.
+    (c) aureljared, 2016.
+    GPLv3
+-->
+<html>
+	<head>
+		<meta name="charset" content="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<title>How Much Tax?</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<h1>how<strong>much</strong>tax?</h1>
+				</div>
+				<div class="col-sm-4 desc">
+					<p>tax calculator for imported goods</p>
+				</div>
+				<div class="col-sm-4">
+					<div class="btn-group pull-right">
+						<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span id="currency">USD <strong><span>loading</span></strong></span> <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+						    <li><a href="#" id="usd">USD <strong><span>loading</span></strong></a></li>
+							<li><a href="#" id="sgd">SGD <strong><span>loading</span></strong></a></li>
+						    <li><a href="#" id="aud">AUD <strong><span>loading</span></strong></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon currency-sign">USD</span>
+						<input disabled type="text" class="form-control" placeholder="Cost of goods" data-entry="costGoods">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon">&#8369;</span>
+						<input disabled type="text" class="form-control" placeholder="Rate of duty" data-entry="rateDuty">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon">&#8369;</span>
+						<input disabled type="text" class="form-control" placeholder="Wharfage due" data-entry="wharfage">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon currency-sign">USD</span>
+						<input disabled type="text" class="form-control" placeholder="Freight cost" data-entry="freightCost">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon">&#8369;</span>
+						<input disabled type="text" class="form-control" placeholder="Bank charges" data-entry="bankCharge">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="extra">
+						<div><span>+</span></div>
+						<div><span><strong>Php 265</strong> (Customs doc. stamp)</span></div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon currency-sign">USD</span>
+						<input disabled type="text" class="form-control" placeholder="Insurance" data-entry="insurance">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon">&#8369;</span>
+						<input disabled type="text" class="form-control" placeholder="Brokerage fee" data-entry="brokerageFee">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="extra">
+						<div><span>+</span></div>
+						<div><span><strong>Php <span id="ipf">250</span></strong> (Import processing fee)</span></div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon currency-sign">USD</span>
+						<input disabled type="text" class="form-control" placeholder="Other charges &amp; costs" data-entry="other">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group">
+						<span class="input-group-addon">&#8369;</span>
+						<input disabled type="text" class="form-control" placeholder="Arrastre charge" data-entry="arrastre">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div id="total">
+						<div><span>=</span></div>
+						<div><span>Php <strong>0.00</strong></span></div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 1.5em;">
+				<div class="col-sm-4">
+					<p>&copy; <a href="https://aureljared.tk" title="">Aurel Jared Dantis, 2016.</a></p>
+				</div>
+				<div class="col-sm-8" style="text-align: right;">
+					<p>Calculations based on the <a href="http://customs.gov.ph/tax-computation/" title="" target="_blank">Bureau of Customs Tax Computation Formula.</a></p>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/formValidation.min.js"></script>
+		<script src="js/script.min.js"></script>
+	</body>
+</html>

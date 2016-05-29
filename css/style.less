@@ -1,0 +1,126 @@
+// Import tax calculator styles.
+// (c) aureljared, 2016.
+// GPLv3
+
+@hlt:   #971ebd;
+@dark:  #564d80;
+@light: #ecdeff;
+
+html, body {
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	background: @light;
+}
+
+h1, p, input, span {
+	color: @dark;
+}
+
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+}
+
+@media screen and (max-width: 991px) {
+	body > div {
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+}
+@media screen and (min-width: 992px) {
+	body {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+}
+
+body {
+	& > div {
+		h1 {
+			font-weight: 300;
+			margin: 0;
+			strong { font-weight: 700 }
+		}
+		.desc {
+			text-align: center;
+			height: 36px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			p { margin: 0 }
+		}
+		.btn-group {
+			.btn-warning {
+				background: @hlt !important;
+				border: none;
+				font-size: 1.2em;
+				span { color: white !important }
+			}
+			ul li { font-size: 1.2em }
+		}
+		.input-group {
+			.input-group-addon {
+				background-color: @dark;
+				color: #eee;
+				border: none;
+				font-size: 1.2em;
+				.noselect;
+			}
+			.currency-sign { background-color: @hlt !important }
+			.form-control {
+				box-shadow: none;
+				border: none;
+				font-size: 1.2em;
+			}
+		}
+		.col-md-4 {
+			margin-top: 1.5em;
+		}
+		.extra {
+			padding: .3em;
+			div {
+				display: inline-block;
+				float: left;
+				span { .noselect }
+			}
+			div:first-child {
+				width: 1em;
+				span { font-weight: 700 }
+			}
+			div:last-child {
+				text-align: right;
+				width: ~"-webkit-calc(100% - 1em)";
+				width: ~"calc(100% - 1em)";
+			}
+		}
+		#total {
+			div {
+				display: inline-block;
+				float: left;
+				font-weight: 700;
+				span { font-size: 1.5em; }
+			}
+			div:first-child {
+				width: 1em;
+				span { .noselect }
+			}
+			div:last-child {
+				text-align: right;
+				width: ~"-webkit-calc(100% - 1em)";
+				width: ~"calc(100% - 1em)";
+				span {
+					color: white;
+					background: @dark;
+					padding: .15em .5em;
+					border-radius: 4px;
+				}
+			}
+		}
+	}
+}
