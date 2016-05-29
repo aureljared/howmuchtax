@@ -55,7 +55,7 @@ $(document).ready(function(){
 	});
 
 	$('input').each(function(){
-		$(this).change(function(){
+		$(this).on('keyup paste', function(){
 			var key = $(this).attr('data-entry'),
 				value = Number($(this).val());
 			entered[key] = value;
