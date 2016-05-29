@@ -78,30 +78,34 @@ $(document).ready(function(){
 			normalize = function(no) { return no.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") };
 
 		// Dutiable value
-		var dutiableValue = (d.costGoods + d.freightCost + d.insurance + d.other) * d.rate;
+		var dutiableValue = d.costGoods + d.freightCost + d.insurance + d.other;
+		var taxableValue = dutiableValue * d.rate;  // Convert to PHP
 
 		// Customs duty
-		var customsDuty = dutiableValue * d.rateDuty;
+		var customsDuty = taxableValue * (d.rateDuty / 100);
 
 		// Customs documentary stamp
 		var cds = 265;
 
 		// Import processing fee
-		if (dutiableValue <= 250000)
+		if (taxableValue <= 250000)
 			var ipf = 250;
-		else if (dutiableValue <= 500000)
+		else if (taxableValue <= 500000)
 			var ipf = 500;
-		else if (dutiableValue <= 750000)
+		else if (taxableValue <= 750000)
 			var ipf = 750;
 		else
 			var ipf = 1000;
 		$('#ipf').text(ipf);
 
+		// Total landed cost
+		var tlc = taxableValue + customsDuty + d.bankCharge + d.brokerageFee + d.arrastre + d.wharfage + cds + ipf;
+
 		// Value added tax
-		var vat = (dutiableValue + d.bankCharge + customsDuty + d.brokerageFee + d.arrastre + d.wharfage) * 0.12;
+		var vat = tlc * 0.12;
 		$('#vat').text(normalize(vat));
 
-		// Total
+		// Total tax
 		var total = customsDuty + vat + ipf;
 		$('#total strong').text(normalize(total));
 	};
