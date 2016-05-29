@@ -74,7 +74,8 @@ $(document).ready(function(){
 	};
 
 	var compute = function() {
-		var d = entered;
+		var d = entered,
+			normalize = function(no) { return no.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") };
 
 		// Dutiable value
 		var dutiableValue = (d.costGoods + d.freightCost + d.insurance + d.other) * d.rate;
@@ -96,14 +97,12 @@ $(document).ready(function(){
 			var ipf = 1000;
 		$('#ipf').text(ipf);
 
-		// Total landed cost
-		var tlc = dutiableValue + d.bankCharge + customsDuty + d.brokerageFee + d.arrastre + d.wharfage;
-
 		// Value added tax
-		var vat = tlc * 0.12;
+		var vat = (dutiableValue + d.bankCharge + customsDuty + d.brokerageFee + d.arrastre + d.wharfage) * 0.12;
+		$('#vat').text(normalize(vat));
 
 		// Total
-		var total = tlc + vat;
-		$('#total strong').text(total.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		var total = customsDuty + vat + ipf;
+		$('#total strong').text(normalize(total));
 	};
 });
